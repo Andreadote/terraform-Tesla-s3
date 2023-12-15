@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "backend" {
 
   tags = {
     Name        = "My backend"
-    Environment = "Prod"
+    Environment = "Prod-HR"
   }
 }
 
