@@ -33,7 +33,7 @@ resource "random_integer" "backend" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "versioning_s3-backend" {
+resource "aws_s3_bucket_versioning" "versioning_tesla-s3-backend" {
   bucket = aws_s3_bucket.backend.id
   versioning_configuration {
     status = var.versioning
