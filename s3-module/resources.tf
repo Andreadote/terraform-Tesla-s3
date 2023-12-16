@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "backend" {
-  count = var.create_vpc? 1: 0
+  count  = var.create_vpc ? 1 : 0
   bucket = "tesla-${lower(var.env)}-${random_integer.backend.result}"
 
   tags = {

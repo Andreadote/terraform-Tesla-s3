@@ -1,4 +1,4 @@
-# Makefile to run terraform worflow
+# Makefile to run terraform worflow-makecheck
 
 check:
 	@echo "Running terraform checks"
