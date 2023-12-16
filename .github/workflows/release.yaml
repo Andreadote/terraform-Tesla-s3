@@ -1,6 +1,10 @@
 name: release
 
-on: [workflow_dispatch]
+#on: [workflow_dispatch] "manual trigger option"
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   release:
