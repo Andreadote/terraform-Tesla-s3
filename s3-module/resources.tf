@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "backend" {
-  
+
   bucket = "tesla-${lower(var.env)}-${random_integer.backend.result}"
 
   tags = {
