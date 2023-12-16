@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "backend" {
+  count = var.create_vpc? 1: 0
   bucket = "tesla-${lower(var.env)}-${random_integer.backend.result}"
 
   tags = {
@@ -14,7 +15,7 @@ resource "aws_kms_key" "mykey" {
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "Tesla_server" {
-  bucket = aws_s3_bucket.backend.id
+  bucket = aws_s3_bucket.backend[0].id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -34,7 +35,7 @@ resource "random_integer" "backend" {
 }
 
 resource "aws_s3_bucket_versioning" "versioning_tesla-s3-backend" {
-  bucket = aws_s3_bucket.backend.id
+  bucket = aws_s3_bucket.backend[0].id
   versioning_configuration {
     status = var.versioning
   }
