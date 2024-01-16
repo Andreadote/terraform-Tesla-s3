@@ -1,0 +1,38 @@
+#for sec-- repos
+
+name: Terraform
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5
+
+      - name: Terraform Init
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.SSH_KEY_GITHUB_ACTIONS}}'
+          terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
