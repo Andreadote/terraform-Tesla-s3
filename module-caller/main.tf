@@ -7,6 +7,6 @@ terraform {
   backend "s3" {
     bucket = "elasticbeanstalk-ca-central-1-109753259968"
     key    = "action/terraform.tfstate"
-    region = "ca-central-2"
+    region = "ca-central-1"
   }
 }
