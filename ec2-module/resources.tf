@@ -43,4 +43,6 @@ resource "aws_network_interface" "foo" {
     instance     = aws_instance.web.id
     device_index = 0
   }
+
+  subnet_id = "your_subnet_id"  # Replace with the actual subnet ID
 }
