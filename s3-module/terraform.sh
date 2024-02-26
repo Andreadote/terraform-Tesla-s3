@@ -20,6 +20,17 @@ else
         exit 1
     fi
 fi
+/* else
+    echo "Checkov is not installed. Installing with brew..."
+    brew install checkov
+    if [ $? -eq 0 ]; then
+        echo "Checkov has been installed successfully."
+    else
+        echo "Error: Failed to install Checkov with brew."
+        exit 1
+    fi
+fi
+*/
 
 
 [ -d .terraform ] && rm -rf .terraform
